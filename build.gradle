@@ -1,0 +1,49 @@
+plugins {
+    id 'application'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'idea'
+    id 'java-library'
+    id 'com.google.protobuf'
+    id 'io.qameta.allure' version "2.10.0"
+    id 'org.sonarqube' version '3.4.0.2513'
+}
+
+application {
+    mainClassName = "MainKt"
+}
+
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    implementation "io.grpc:grpc-protobuf:$grpcVersion"
+    implementation "io.grpc:grpc-stub:$grpcVersion"
+    implementation "io.grpc:grpc-netty:$grpcVersion"
+
+    implementation "com.google.protobuf:protobuf-java:$protobuf_version"
+    implementation "com.google.protobuf:protobuf-java-util:$protobuf_version"
+
+    implementation project(':api')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '11'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '11'
+}
+

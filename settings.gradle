@@ -1,0 +1,14 @@
+pluginManagement {
+    plugins {
+        id 'org.jetbrains.kotlin.jvm' version "${kotlinVersion}"
+        id 'com.google.protobuf' version "$googleProtobufPlugin"
+    }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'GRPC-service'
+include 'api'
+
